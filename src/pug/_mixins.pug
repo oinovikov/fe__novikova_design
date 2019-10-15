@@ -1,0 +1,8 @@
+mixin nav($list)
+    nav.nav
+        div.nav__body
+            ul.nav__menu
+                for $item, $i in $list
+                    li.nav__item
+                        a.nav__link(class=($i == 0 ? 'nav__link_state_active' : 'nav__link_state_hover'), href=$item.href)
+                            span.nav__label= $item.label

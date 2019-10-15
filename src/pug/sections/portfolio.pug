@@ -1,0 +1,14 @@
+article(class=`${$pageRootClassName}__section`)
+    div.portfolio
+        div(class=`${$pageRootClassName}__layout`)
+            div.portfolio__body
+                div.portfolio__nav
+                    +nav($portfolioNav)
+
+                div.portfolio__list
+                    for $item in $portfolioList
+                        div.portfolio__item(class=$item.wide ? 'portfolio__item_size_wide' : '')
+                            div.project
+                                div.project__picture
+                                    img.project__image(src=$item.img, alt=$item.alt)
+                                    //- caption.project__caption

@@ -45,7 +45,7 @@ calc() {
 
 /* Get Media query width */
 getMQWidth($i) {
-  return px2em($pageLayout.screens[$i] + ($pageLayout.screens[$i] == 0 ? 0 : $pageLayout.marginPage[$i] * 2))
+  return px2em($pageLayout.screens[$i] + ($pageLayout.screens[$i] == 0 ? 0 : ($pageLayout.marginPage[$i] + $pageLayout.marginSafe[$i]) * 2))
 }
 
 

@@ -1,0 +1,54 @@
+// preview
+
+.preview
+  position: relative
+  display: block
+  padding: 0
+  margin: 0
+
+  &__body
+  &__link
+  &__image
+    position: relative
+    display: block
+    padding: 0
+    margin: 0
+
+  &__body
+    for $i in 0...length($pageLayout.screens)
+      @media all and (min-width: getMQWidth($i))
+        if $i == 0 or ($i > 0 and $previewSection.marginTop[$i] != $previewSection.marginTop[$i - 1])
+          margin-top: px2rem($previewSection.marginTop[$i])
+
+  &__picture
+    for $i in 0..$previewSection.widePictureBeforeLayout
+      @media all and (min-width: getMQWidth($i))
+        if $i < $previewSection.widePictureBeforeLayout
+          margin: 0 px2rem(-1 * $pageLayout.marginSafe[$i])
+        else if $i == $previewSection.widePictureBeforeLayout
+          margin: 0
+
+  &__link
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    display: flex
+    flex-flow: column nowrap
+    justify-content: flex-start
+    align-content: center
+    align-items: center
+    width: 100%
+    height: 100%
+    padding: 0
+    margin: 0
+    text-decoration: none
+    cursor: pointer
+    overflow: hidden
+
+  &__image
+    width: 100%
+    height: auto
+    border: none
+    outline: none

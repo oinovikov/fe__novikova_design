@@ -1,0 +1,49 @@
+// portfolio
+
+.portfolio
+  position: relative
+  display: block
+  padding: 0
+  margin: 0
+
+  &__body
+  &__nav
+  &__list
+  &__item
+    position: relative
+    display: block
+    padding: 0
+    margin: 0
+
+  &__nav
+    display: flex
+    flex-flow: row nowrap
+    justify-content: center
+    align-content: center
+    align-items: center
+    height: px2rem(48)
+    padding: px2rem((80 - 48) / 2) 0
+    margin: 0 auto
+
+  &__list
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    align-content: flex-start
+    align-items: flex-start
+    padding: px2rem(24) 0
+
+  &__item
+    flex: 0 0 100%
+    width: 100%
+    min-height: auto
+    background-color: #fafafa
+
+    @media all and (min-width: getMQWidth(4))
+      flex-basis: 50%
+      width: 50%
+      min-height: 320px
+
+    &_size_wide
+      flex-basis: 100%
+      width: 100%

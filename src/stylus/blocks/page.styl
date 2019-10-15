@@ -1,4 +1,4 @@
-// app
+// page
 
 .{$pageRootClassName}
   zoom: 1
@@ -15,7 +15,7 @@
   border: none
   border-collapse: collapse
   outline: none
-  background: $pageLayout.bgColor.light
+  background: $pageLayout.bgColor
   font-size: 100%
   text-size-adjust: 100%
   overflow-x: auto
@@ -39,11 +39,6 @@
   &_state_unloading
     user-select: none
     pointer-events: none
-
-  &_theme_dark
-    background-color: $pageLayout.bgColor.dark
-
-    selection(#01579b, #eee)
 
   &__body
     zoom: 1
@@ -96,11 +91,17 @@
     padding: 0
 
   &__layout
+    width: px2em($pageLayout.maxWidth[$pageLayout.default])
     padding: 0 px2em($pageLayout.marginPage[$pageLayout.default])
 
     for $_layout, $i in $pageLayout.screens
       @media all and (min-width: getMQWidth($i))
-        padding: 0 px2em($pageLayout.marginPage[$i])
+        if $i == 0
+          width: auto
+        if $i == 0 or ($i > 0 and $pageLayout.maxWidth[$i] != $pageLayout.maxWidth[$i - 1])
+          max-width: px2em($pageLayout.maxWidth[$i])
+        if $i == 0 or ($i > 0 and $pageLayout.marginSafe[$i] != $pageLayout.marginSafe[$i - 1])
+          padding: 0 px2em($pageLayout.marginSafe[$i])
 
   &__shadows
     position: fixed

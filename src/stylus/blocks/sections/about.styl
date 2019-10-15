@@ -1,0 +1,35 @@
+// about
+
+.about
+  position: relative
+  display: block
+  padding: 0
+  margin: 0
+
+  &__body
+  &__paragraph
+    position: relative
+    display: block
+    padding: 0
+    margin: 0
+
+  &__body
+    for $i in 0...length($pageLayout.screens)
+      @media all and (min-width: getMQWidth($i))
+        if $i == 0 or ($i > 0 and $aboutSection.marginVertical[$i] != $aboutSection.marginVertical[$i - 1])
+          margin: px2rem($aboutSection.marginVertical[$i]) 0
+
+  &__paragraph
+    max-width: px2rem($aboutSection.maxWidth)
+    margin: 0 auto
+    font-family: $aboutSection.fontFamily
+    color: rgba(0, 0, 0, .88)
+    letter-spacing: .024em
+    text-align: left
+
+    for $i in 0...length($pageLayout.screens)
+      @media all and (min-width: getMQWidth($i))
+        if $i == 0 or ($i > 0 and $aboutSection.fontSize[$i] != $aboutSection.fontSize[$i - 1])
+          font-size: px2rem($aboutSection.fontSize[$i])
+        if $i == 0 or ($i > 0 and $aboutSection.lineHeight[$i] != $aboutSection.lineHeight[$i - 1])
+          line-height: px2rem($aboutSection.lineHeight[$i])

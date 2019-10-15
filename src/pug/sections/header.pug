@@ -1,2 +1,9 @@
 header(class=`${$pageRootClassName}__section`)
-    div(class=`${$pageRootClassName}__layout`) I`m header
+    div.header
+        div(class=`${$pageRootClassName}__layout`)
+            div.header__body
+                div.header__logo
+                    include ../components/logo.pug
+
+                div.header__nav
+                    +nav($mainNav)

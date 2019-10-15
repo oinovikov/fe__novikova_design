@@ -1,0 +1,92 @@
+// nav
+
+.nav
+  position: relative
+  display: block
+  height: px2rem(48)
+  padding: 0
+  margin: 0
+  overflow: hidden
+  user-select: none
+
+  for $i in 0...length($pageLayout.screens)
+    @media all and (min-width: getMQWidth($i))
+      margin: 0 px2rem(-1 * $pageLayout.marginSafe[$i])
+
+  &__body
+  &__menu
+  &__item
+  &__link
+    position: relative
+    display: block
+    padding: 0
+    margin: 0
+
+  &__body
+    width: 100%
+    height: px2rem(48 + 24)
+    overflow-x: scroll
+
+  &__menu
+    list-style: none
+    display: flex
+    flex-flow: row nowrap
+    justify-content: flex-start
+    align-content: flex-start
+    align-items: flex-start
+
+  &__item
+    flex: 0 0 auto
+    margin-left: px2rem(32)
+
+    @media all and (min-width: getMQWidth(1))
+      margin-left: px2rem(48)
+
+    &:first-child
+      for $i in 0...length($pageLayout.screens)
+        @media all and (min-width: getMQWidth($i))
+          margin-left: px2rem($pageLayout.marginSafe[$i] * 2)
+
+  &__link
+    outline: none
+    line-height: px2rem(48)
+    color: #000
+    letter-spacing: .024em
+    text-decoration: none
+    overflow: hidden
+    opacity: .64
+    transition: opacity .24s linear
+    -webkit-tap-highlight-color: transparent
+
+    for $i in 0...length($pageLayout.screens)
+      @media all and (min-width: getMQWidth($i))
+        left: px2rem(-1 * $pageLayout.marginSafe[$i])
+
+    &_state_hover:hover
+    &_state_active
+      opacity: .88
+
+    &_state_hover:hover
+      cursor: pointer
+
+    &::before
+      content: ''
+      position: absolute
+      right: px2em(1)
+      bottom: px2em((48 - 32) / 2 - 2)
+      left: 0
+      display: none
+      height: px2em(2)
+      background-color: #000
+
+    &_state_active::before
+      display: block
+
+  &__label
+    position: relative
+    display: inline
+    font-size: px2rem(14)
+    vertical-align: top
+
+    @media all and (min-width: getMQWidth(5))
+      font-size: px2rem(17)

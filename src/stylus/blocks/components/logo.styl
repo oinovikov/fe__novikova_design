@@ -1,0 +1,19 @@
+// logo
+
+.logo
+  position: relative
+  display: block
+  padding: 0
+  margin: 0
+
+  & svg
+    position: relative
+    display: block
+    width: px2rem(64)
+    height: px2rem(24)
+    padding: 0
+    margin: 0 auto
+
+    @media all and (min-width: getMQWidth(5))
+      width: px2rem(80)
+      height: px2rem(30)
